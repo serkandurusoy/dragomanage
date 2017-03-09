@@ -1,0 +1,13 @@
+/*
+.modal-body {
+  height: calc(100vh - 207px);
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .modal-body {
+    height: calc(100vh - 167px);
+    overflow-y: auto;
+  }
+}
+*/
