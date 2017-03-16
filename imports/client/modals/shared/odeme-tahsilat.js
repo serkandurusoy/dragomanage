@@ -96,7 +96,15 @@ export default class Kart extends Component {
         </Col>
       </Row>
       <Row>
-        <Col sm={6}>
+        <Col sm={2}>
+          <BoolField
+            staticField={updateForm}
+            transform={v => v === true ? 'Evet' : 'Hayır'}
+            content={record && record.belgeli ? 'Evet' : 'Hayır'}
+            showInlineError
+            name="belgeli" />
+        </Col>
+        <Col sm={5}>
           <DateTimeField
             staticField={updateForm}
             content={record && record.islemTarihi && record.islemTarihi.toFormattedDate()}
@@ -105,7 +113,7 @@ export default class Kart extends Component {
             timeFormat={false}
             name="islemTarihi" />
         </Col>
-        <Col sm={6}>
+        <Col sm={5}>
           <DateTimeField
             staticField={updateForm}
             content={record && record.vadeTarihi && record.vadeTarihi.toFormattedDate()}

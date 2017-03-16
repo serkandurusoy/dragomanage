@@ -111,6 +111,12 @@ export const odemeTahsilat = new SimpleSchema({
       }
     },
   },
+  belgeli: {
+    label: 'Belgeli',
+    type: Boolean,
+    index: 1,
+    defaultValue: false,
+  },
   islemTarihi: {
     label: 'İşlem tarihi',
     type: Date,
