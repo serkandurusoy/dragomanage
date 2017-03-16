@@ -17,7 +17,7 @@ export default function methodMixinYetki(methodOptions) {
       throw new Meteor.Error('403', 'Kullanıcı yetkili değil');
     }
 
-    if (yetkiler.find(yetki => !Meteor.user().yetkili(yetki))) {
+    if (yetkiler.find(yetki => !Meteor.user().yetkili(yetki.value))) {
       throw new Meteor.Error('403', 'Kullanıcı yetkili değil');
     }
 
