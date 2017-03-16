@@ -9,8 +9,10 @@ import createGiderFixture from './_gider';
 
 import resetTimestamps from './_reset-timestamps';
 
+import updateProductionUrunFiyat from './_update-production-urun-fiyat';
+
 const Migrations = new Mongo.Collection('migrations');
-const MIGRATION_VERSION = 1;
+const MIGRATION_VERSION = 2;
 
 if (Meteor.isDevelopment) {
 
@@ -20,19 +22,23 @@ if (Meteor.isDevelopment) {
 
     if (!lastMigration || lastMigration.version < MIGRATION_VERSION) {
 
-      createKullaniciFixture();
-      createKasaFixture();
-      createMusteriFixture();
-      createCariKartFixture();
-      createUrunFixture();
-      createGiderFixture();
+      // Migration version 1
+      // createKullaniciFixture();
+      // createKasaFixture();
+      // createMusteriFixture();
+      // createCariKartFixture();
+      // createUrunFixture();
+      // createGiderFixture();
+      //
+      // resetTimestamps();
 
-      resetTimestamps();
+      // Migration version 2
+      // updateProductionUrunFiyat();
 
-      Migrations.insert({
-        version: MIGRATION_VERSION,
-        date: new Date(),
-      });
+      // Migrations.insert({
+      //   version: MIGRATION_VERSION,
+      //   date: new Date(),
+      // });
 
     }
 
