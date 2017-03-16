@@ -100,9 +100,19 @@ KasaTransferleri.Schema = new SimpleSchema({
     label: 'İşlem tarihi',
     type: Date,
     index: -1,
-    min: Date.sistemAcilis().isSameOrBefore(Date.lastQuarter()) ? Date.sistemAcilis() : Date.lastQuarter(),
-    max: Date.today(),
     defaultValue: Date.today(),
+    custom() {
+      const min = Date.sistemAcilis().isSameOrBefore(Date.lastQuarter()) ? Date.sistemAcilis() : Date.lastQuarter();
+      const max = Date.today();
+      if (this.isSet) {
+        if (min.isAfter(this.value)) {
+          return 'notAllowed';
+        }
+        if (max.isBefore(this.value)) {
+          return 'notAllowed';
+        }
+      }
+    },
   },
   aciklama: {
     label: 'Açıklama',

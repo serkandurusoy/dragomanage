@@ -98,31 +98,31 @@ export const gelirGider = new SimpleSchema({
     },
   },
   urunKdv: {
-    label: 'Kdv',
+    label: 'Ürün kdvsi',
     type: Number,
     optional: true,
     autoValue() {
       const urun = this.field('urun');
       if (this.isInsert && urun.isSet) {
         const urunDoc = Urunler.findOne(urun.value);
-        return urunDoc && urunDoc.kdv;
+        return urunDoc && (urunDoc.kdv || 0);
       }
     },
   },
   urunKur: {
-    label: 'Kur',
+    label: 'Ürün kuru',
     type: String,
     optional: true,
     autoValue() {
       const urun = this.field('urun');
       if (this.isInsert && urun.isSet) {
         const urunDoc = Urunler.findOne(urun.value);
-        return urunDoc && urunDoc.kur;
+        return urunDoc && (urunDoc.kur || KURLAR.TRY.value);
       }
     },
   },
   urunFiyat: {
-    label: 'Fiyat',
+    label: 'Ürün fiyatı',
     type: Number,
     optional: true,
     autoValue() {
@@ -130,12 +130,12 @@ export const gelirGider = new SimpleSchema({
       const adet = this.field('adet');
       if (this.isInsert && urun.isSet) {
         const urunDoc = Urunler.findOne(urun.value);
-        return urunDoc && urunDoc.fiyat * (adet.value || 1);
+        return urunDoc && (urunDoc.fiyat || 0) * (adet.value || 1);
       }
     },
   },
   urunOzelFiyat: {
-    label: 'Özel fiyat',
+    label: 'Ürün özel fiyatı',
     type: Number,
     optional: true,
     autoValue() {
@@ -143,7 +143,7 @@ export const gelirGider = new SimpleSchema({
       const adet = this.field('adet');
       if (this.isInsert && urun.isSet) {
         const urunDoc = Urunler.findOne(urun.value);
-        return urunDoc && urunDoc.ozelFiyat * (adet.value || 1);
+        return urunDoc && (urunDoc.ozelFiyat || 0) * (adet.value || 1);
       }
     },
   },
@@ -158,7 +158,7 @@ export const gelirGider = new SimpleSchema({
       if (this.isInsert && urun.isSet && islemTarihi.isSet && kurCinsi.isSet) {
         const kur = Kurlar.findOne({tarih: islemTarihi.value})[kurCinsi.value];
         const urunDoc = Urunler.findOne(urun.value);
-        const tutar =  urunDoc && urunDoc.fiyat * (adet.value || 1);
+        const tutar =  urunDoc && (urunDoc.fiyat || 0) * (adet.value || 1);
         return Math.round(kur * ((tutar || 0) * 100));
       }
     },
@@ -174,7 +174,7 @@ export const gelirGider = new SimpleSchema({
       if (this.isInsert && urun.isSet && islemTarihi.isSet && kurCinsi.isSet) {
         const kur = Kurlar.findOne({tarih: islemTarihi.value})[kurCinsi.value];
         const urunDoc = Urunler.findOne(urun.value);
-        const tutar =  urunDoc && urunDoc.ozelFiyat * (adet.value || 1);
+        const tutar =  urunDoc && (urunDoc.ozelFiyat || 0) * (adet.value || 1);
         return Math.round(kur * ((tutar || 0) * 100));
       }
     },
