@@ -533,7 +533,7 @@
         },
         "readable-stream": {
           "version": "1.0.34",
-          "from": "readable-stream@~1.0.26",
+          "from": "readable-stream@>=1.0.26 <1.1.0",
           "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz"
         }
       }
@@ -597,7 +597,7 @@
         },
         "readable-stream": {
           "version": "1.0.34",
-          "from": "readable-stream@~1.0.24",
+          "from": "readable-stream@>=1.0.24 <1.1.0",
           "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz"
         }
       }
@@ -1055,7 +1055,7 @@
         },
         "readable-stream": {
           "version": "1.0.34",
-          "from": "readable-stream@~1.0.2",
+          "from": "readable-stream@>=1.0.2 <1.1.0",
           "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz"
         }
       }
@@ -2112,7 +2112,7 @@
         },
         "readable-stream": {
           "version": "1.0.34",
-          "from": "readable-stream@~1.0.26",
+          "from": "readable-stream@>=1.0.26 <1.1.0",
           "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz"
         }
       }
