@@ -29,6 +29,11 @@ const Tarihce = createContainer(props => {
 
 }, class Tarihce extends Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const { girisKayitlari } = nextProps;
+    return girisKayitlari && girisKayitlari.length > 0;
+  }
+
   loadMore = (e) => {
     if (e) e.preventDefault();
     limit.set(limit.get() + LIMIT);

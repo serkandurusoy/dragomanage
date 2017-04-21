@@ -92,6 +92,11 @@ export const GelirGider = createContainer(props => {
     this.search = debounce(this.search, 300);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const { records } = nextProps;
+    return records && records.length > 0;
+  }
+
   state = {
     modal: null,
     searchPane: false,
