@@ -85,6 +85,7 @@ export const OdemeTahsilat = createContainer(props => {
   constructor(props) {
     super(props);
     props.limit.set(LIMIT);
+    props.selectorOptions.set({});
     this.search = debounce(this.search, 300);
   }
 

@@ -55,6 +55,7 @@ export default createContainer(props => {
   constructor(props) {
     super(props);
     limit.set(LIMIT);
+    selectorOptions.set({});
     this.search = debounce(this.search, 300);
   }
 
