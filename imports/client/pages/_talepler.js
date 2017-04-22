@@ -84,6 +84,7 @@ export default createContainer(props => {
   constructor(props) {
     super(props);
     limit.set(LIMIT);
+    selectorOptions.set({});
     this.search = debounce(this.search, 300);
   }
 
@@ -184,7 +185,7 @@ export default createContainer(props => {
                     multi={false}
                     options={Kullanicilar
                       .find({gizli: false}, {sort: {ad:1, soyad: 1}})
-                      .map(v => ({value: v._id, label: v.isim()}))
+                      .map(v => ({value: v.user() ? v.user()._id : v._id, label: v.isim()}))
                     }
                   />
                 </Col>
