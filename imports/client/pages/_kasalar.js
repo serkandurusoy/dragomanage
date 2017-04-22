@@ -45,8 +45,11 @@ export default createContainer(props => {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { records } = nextProps;
-    return records && records.length > 0;
+    const { subscriptionsLoading, count } = nextProps;
+    if (!subscriptionsLoading && count === 0) {
+      return true;
+    }
+    return count > 0;
   }
 
   state = {

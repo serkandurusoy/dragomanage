@@ -30,8 +30,11 @@ const Tarihce = createContainer(props => {
 }, class Tarihce extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { girisKayitlari } = nextProps;
-    return girisKayitlari && girisKayitlari.length > 0;
+    const { subscriptionsLoading, count } = nextProps;
+    if (!subscriptionsLoading && count === 0) {
+      return true;
+    }
+    return count > 0;
   }
 
   loadMore = (e) => {
