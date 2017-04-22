@@ -62,6 +62,7 @@ class Kart extends Component {
       <Row>
         <Col sm={4}>
           <NumberField
+            autofocus
             staticField={updateForm}
             disabled={updateForm}
             showInlineError

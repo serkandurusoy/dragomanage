@@ -114,6 +114,7 @@ export default createContainer(props => {
         <Row>
           <Col sm={6}>
             <SelectField
+              autofocus
               staticField={updateForm}
               content={record && record.cariKart && record.cariKartLabel()}
               name="cariKart"

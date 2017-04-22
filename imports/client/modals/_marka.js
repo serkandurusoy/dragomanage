@@ -48,6 +48,7 @@ class Kart extends Component {
       onChange={onChange}
       error={error} >
       <SelectField
+        autofocus
         content={record && record.tip && record.tip.enumValueToLabel(MENSEILER)}
         options={Object.keys(MENSEILER).map(v => MENSEILER[v])}
         multi={false}

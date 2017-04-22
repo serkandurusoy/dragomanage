@@ -48,6 +48,7 @@ class Kart extends Component {
       onChange={onChange}
       error={error} >
       <SelectField
+        autofocus
         disabled={updateForm}
         help={updateForm && 'Etiket tipi değiştirilemez'}
         content={record && record.tip && record.tip.enumValueToLabel(ETIKETLER)}

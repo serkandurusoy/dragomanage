@@ -69,6 +69,7 @@ class Kart extends Component {
       <Row>
         <Col sm={3}>
           <SelectField
+            autofocus
             content={record && record.tip && record.tip.enumValueToLabel(CARI_KARTLAR)}
             options={Object.keys(CARI_KARTLAR).map(v => CARI_KARTLAR[v])}
             multi={false}

@@ -71,6 +71,7 @@ class Kart extends Component {
       <Row>
         <Col sm={6}>
           <SelectField
+            autofocus
             staticField={updateForm}
             content={record && record.islem && record.islem.enumValueToLabel(TALEPLER)}
             options={Object.keys(TALEPLER).map(v => TALEPLER[v])}

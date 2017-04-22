@@ -51,6 +51,7 @@ class Kart extends Component {
       <Row>
         <Col sm={6}>
           <TextField
+            autofocus
             showInlineError
             disabled={updateForm && !!record.user()}
             help={updateForm && record.user() && 'Kullanıcı giriş yaptığı için değiştirilemez'}

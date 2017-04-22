@@ -65,6 +65,7 @@ export default createContainer(() => {
           <Row>
             <Col xs={6} sm={3}>
               <NumberField
+                autofocus
                 label={false}
                 placeholder={KURLAR.USD.label}
                 showInlineError

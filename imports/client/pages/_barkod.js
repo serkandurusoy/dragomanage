@@ -102,6 +102,7 @@ export default class Barkod extends Component {
             <Row>
               <Col sm={8} className="searchContainer">
                 <SelectField
+                  autofocus
                   label={false}
                   name="urun"
                   placeholder="Ürün"

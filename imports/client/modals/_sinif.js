@@ -48,6 +48,7 @@ class Kart extends Component {
       onChange={onChange}
       error={error} >
       <SelectField
+        autofocus
         disabled={updateForm}
         help={updateForm && 'Sınıf tipi değiştirilemez'}
         content={record && record.tip && record.tip.enumValueToLabel(SINIFLAR)}
@@ -57,6 +58,7 @@ class Kart extends Component {
         name="tip" />
       <DisplayIfField condition={model => model.tip === SINIFLAR.GRUP.value}>
         <SelectField
+          autofocus
          content={record && record.ustLabel}
           options={Siniflar.selectOptions(SINIFLAR.IS.value, updateForm)}
           multi={false}
@@ -65,6 +67,7 @@ class Kart extends Component {
       </DisplayIfField>
       <DisplayIfField condition={model => model.tip === SINIFLAR.SINIF.value}>
         <SelectField
+          autofocus
           content={record && record.ustLabel}
           options={Siniflar.selectOptions(SINIFLAR.GRUP.value, updateForm)}
           multi={false}

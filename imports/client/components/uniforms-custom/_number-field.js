@@ -22,6 +22,7 @@ const Number = ({staticField, ...props}) =>
           ref={props.inputRef}
           type={props.type}
           value={props.value}
+          autoFocus={props.autofocus}
         />
   ))
 ;
