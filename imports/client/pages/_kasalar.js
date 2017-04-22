@@ -114,7 +114,7 @@ export default createContainer(props => {
             onChangeModel={model => this.search(model)}
           >
             <Col sm={4} className="searchContainer">
-              <TextField name="keyword" label={false} placeholder="İsim" />
+              <TextField autofocus name="keyword" label={false} placeholder="İsim" />
             </Col>
             <Col sm={4} className="searchContainer">
               <SelectField

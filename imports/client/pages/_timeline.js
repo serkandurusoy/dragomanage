@@ -161,6 +161,7 @@ export default createContainer(props => {
               <Row>
                 <Col sm={4} className="searchContainer">
                   <TextField
+                    autofocus
                     showInlineError
                     name="reference"
                     label={false}

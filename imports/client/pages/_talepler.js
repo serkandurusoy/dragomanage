@@ -179,6 +179,7 @@ export default createContainer(props => {
               <Row>
                 <Col sm={4} className="searchContainer">
                   <SelectField
+                    autofocus
                     label={false}
                     name="kaydeden"
                     placeholder="Kaydeden"

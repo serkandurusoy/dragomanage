@@ -135,7 +135,7 @@ export default createContainer(props => {
             <Col xs={12}>
               <Row>
                 <Col sm={4} className="searchContainer">
-                  <TextField name="keyword" label={false} placeholder="İsim, marka veya barkod" />
+                  <TextField autofocus name="keyword" label={false} placeholder="İsim, marka veya barkod" />
                 </Col>
                 <Col sm={4} className="searchContainer">
                   <SelectField

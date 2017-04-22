@@ -184,6 +184,7 @@ export const GelirGider = createContainer(props => {
               <Row>
                 <Col sm={6} className="searchContainer">
                   <SelectField
+                    autofocus
                     label={false}
                     name="cariKart"
                     placeholder="Cari kart"

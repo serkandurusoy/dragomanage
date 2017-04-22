@@ -178,6 +178,7 @@ export const OdemeTahsilat = createContainer(props => {
               <Row>
                 <Col sm={8} className="searchContainer">
                   <SelectField
+                    autofocus
                     label={false}
                     name="cariKart"
                     placeholder="Cari kart"
