@@ -7,6 +7,21 @@ import CookieDough from 'cookie-dough';
 import { COLLECTIONS } from '/imports/environment/meta';
 import * as dokumler from './dokumler';
 
+import { Webapp } from 'meteor/webapp';
+
+// very ugly hack to increase timeout to temporarily solve xls generation timeout problems
+// proper fix would be to stream the file using the streaming i/o interface from exceljs
+// TODO: https://github.com/guyonroche/exceljs#streaming-io
+WebApp.httpServer.on('request', function (req, res) {
+  req.setTimeout(10 * 120 * 1000);
+  const finishListeners = res.listeners('finish');
+  res.removeAllListeners('finish');
+  res.on('finish', function () {
+    res.setTimeout(5 * 1000);
+  });
+  finishListeners.forEach(function (l) { res.on('finish', l); });
+});
+
 JsonRoutes.Middleware.use(cookieParser());
 
 JsonRoutes.add('get', '/dokumler/:dokumAdi', (req, res, next) => {
