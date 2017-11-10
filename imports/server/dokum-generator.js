@@ -43,12 +43,20 @@ JsonRoutes.add('get', '/dokumler/:dokumAdi', (req, res, next) => {
         if (user && user.yetkili(yetki)) {
           try {
 
-            JsonRoutes.setResponseHeaders({
+            res.writeHead(200, {
               'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-              'Content-Disposition': `attachment;`,
+              'Content-Disposition': 'attachment;',
+              'Transfer-Encoding': 'chunked',
+              'Connection': 'Transfer-Encoding',
+              'X-Content-Type-Options': 'nosniff',
             });
 
-            let wb = new Excel.Workbook();
+            let wb = new Excel.stream.xlsx.WorkbookWriter({
+              useStyles: true,
+              useSharedStrings: true,
+            });
+            wb.stream.pipe(res);
+
             const label = Object.keys(COLLECTIONS)
               .map(v => COLLECTIONS[v])
               .find(v => v.value === dokumCollection)
@@ -63,11 +71,10 @@ JsonRoutes.add('get', '/dokumler/:dokumAdi', (req, res, next) => {
               {state: 'frozen', xSplit: 0, ySplit: 1}
             ];
             dokumler[dokumCollection](ws);
-            wb.xlsx.write(res)
-              .then(() => {
-                JsonRoutes.sendResult(res);
-              });
-
+            ws.commit();
+            wb.commit().then(() => {
+              res.end();
+            });
           } catch (e) {
             JsonRoutes.sendResult(res, {code: 404});
           }
