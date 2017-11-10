@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Row, Col, Table, Button, Well } from 'react-bootstrap';
 import { AutoForm, SubmitField } from '/imports/client/components/uniforms-bootstrap3';
@@ -21,7 +21,7 @@ function Barcode(props) {
   return <img className="barcodeImage" alt={props.barcode} src={blob}/>;
 }
 
-const BarkodUrunItem = createContainer(props => {
+const BarkodUrunItem = withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe('gelirGiderUrunu', {_id: props.urunId}),
@@ -32,7 +32,7 @@ const BarkodUrunItem = createContainer(props => {
     urun: Urunler.findOne(props.urunId),
   }
 
-}, ({urun, urunId, adet, cikar, subscriptionsLoading}) => subscriptionsLoading
+})(({urun, urunId, adet, cikar, subscriptionsLoading}) => subscriptionsLoading
   ? <TableRowLoading colSpan={7}/>
   : <tr>
       <td data-th="Marka">{urun.marka}</td>

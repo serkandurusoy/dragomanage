@@ -1,4 +1,4 @@
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import {
   Row,
@@ -10,13 +10,13 @@ import { Kurlar } from '/imports/api/model';
 import { KURLAR } from '/imports/environment/enums';
 import debounce from '/imports/utils/debounce';
 
-export default createContainer(() => {
+export default withTracker(() => {
 
   return {
     kurlar: Kurlar.findOne({}, { sort: {tarih: -1}, limit: 1 })
   };
 
-}, class KurHesaplayici extends Component {
+})(class KurHesaplayici extends Component {
 
   constructor() {
     super();

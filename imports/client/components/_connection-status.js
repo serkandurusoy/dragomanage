@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 import {
   Alert,
   Glyphicon,
@@ -11,7 +11,7 @@ const wasConnected = new ReactiveVar(false);
 const retryTimeSeconds = new ReactiveVar(0);
 const connectionRetryUpdateInterval = new ReactiveVar(null);
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   const isConnected = Meteor.status().connected;
 
@@ -39,7 +39,7 @@ export default createContainer(props => {
     retryTimeSeconds: retryTimeSeconds.get(),
   }
 
-  }, class ConnectionStatus extends Component {
+  })(class ConnectionStatus extends Component {
 
     render() {
       const {

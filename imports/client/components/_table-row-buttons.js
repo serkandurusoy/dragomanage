@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   return {
     userId: Meteor.userId(),
@@ -13,7 +13,7 @@ export default createContainer(props => {
     hicYetkiliDegil: Meteor.user().hicYetkiliDegil(),
   };
 
-}, function TableRowButtons({record, modalOpen, yetkili, hicYetkiliDegil, sadeceTalebeYetkili, userId}) {
+})(function TableRowButtons({record, modalOpen, yetkili, hicYetkiliDegil, sadeceTalebeYetkili, userId}) {
   return <td data-th="" className="table-buttons noWrap" >
     {
       yetkili &&

@@ -1,17 +1,17 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React from 'react';
 import { Alert, Well } from 'react-bootstrap';
 import { Image } from '/imports/client/components';
 import { loginFailure } from '/imports/client/login-failure-handler';
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   return {
     loginFailure: loginFailure.get(),
   };
 
-}, function Login({loginFailure, ...props}) {
+})(function Login({loginFailure, ...props}) {
   return <div className="loginWrapper">
     <div className="loginBox" onClick={login}>
       <div className="loginLogo">

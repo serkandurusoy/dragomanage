@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Row, Col, Table } from 'react-bootstrap';
 import { AutoForm, TextField } from '/imports/client/components/uniforms-bootstrap3';
 import { SelectField, DateTimeField } from '/imports/client/components/uniforms-custom';
@@ -11,7 +11,7 @@ import debounce from '/imports/utils/debounce';
 import { Etiketler, Kullanicilar } from '/imports/api/model';
 import { cariKart, urun } from '/imports/api/methods';
 
-export const GelirGider = createContainer(props => {
+export const GelirGider = withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe(props.subName, {selectorOptions: props.selectorOptions.get(), limit: props.limit.get()}),
@@ -84,7 +84,7 @@ export const GelirGider = createContainer(props => {
     count: cursor && cursor.count(),
   };
 
-}, class GelirGider extends Component {
+})(class GelirGider extends Component {
 
   constructor(props) {
     super(props);

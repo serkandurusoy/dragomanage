@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Row, Col, Table } from 'react-bootstrap';
 import { AutoForm } from '/imports/client/components/uniforms-bootstrap3';
 import { SelectField, DateTimeField } from '/imports/client/components/uniforms-custom';
@@ -11,7 +11,7 @@ import debounce from '/imports/utils/debounce';
 import { Etiketler, Kasalar, Kullanicilar } from '/imports/api/model';
 import { cariKart } from '/imports/api/methods';
 
-export const OdemeTahsilat = createContainer(props => {
+export const OdemeTahsilat = withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe(props.subName, {selectorOptions: props.selectorOptions.get(), limit: props.limit.get()}),
@@ -80,7 +80,7 @@ export const OdemeTahsilat = createContainer(props => {
     count: cursor && cursor.count(),
   };
 
-}, class OdemeTahsilat extends Component {
+})(class OdemeTahsilat extends Component {
 
   constructor(props) {
     super(props);

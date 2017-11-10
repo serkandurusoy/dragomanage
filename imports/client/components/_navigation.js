@@ -1,4 +1,4 @@
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import {
   Navbar,
@@ -11,7 +11,7 @@ import { browserHistory } from 'react-router';
 import { Logo, ProfileMenu } from './';
 import { YETKILER } from '/imports/environment/meta';
 
-export default createContainer(() => {
+export default withTracker(() => {
 
   let currentUser = Meteor.user();
   const kullanici = currentUser && currentUser.kullanici();
@@ -21,7 +21,7 @@ export default createContainer(() => {
     kullanici,
   };
 
-}, class Navigation extends Component {
+})(class Navigation extends Component {
 
     state = {
       expanded: false,

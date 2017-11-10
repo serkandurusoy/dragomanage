@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import {
   Row,
   Col,
@@ -31,7 +31,7 @@ const selectedTutarKurus = new ReactiveVar(0);
 const selectedKur = new ReactiveVar(KURLAR.TRY.value);
 const selectedIslemTarihi = new ReactiveVar(Date.today());
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   const SelectedUrunId = selectedUrunId.get();
   const SelectedAdet = selectedAdet.get();
@@ -69,7 +69,7 @@ export default createContainer(props => {
     selectedKonum: selectedKonum.get(),
   };
 
-}, class Kart extends Component {
+})(class Kart extends Component {
     render() {
       const {
         staticForm,

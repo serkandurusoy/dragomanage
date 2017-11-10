@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 import { Row, Col, Table } from 'react-bootstrap';
 import { AutoForm, TextField } from '/imports/client/components/uniforms-bootstrap3';
 import { SelectField } from '/imports/client/components/uniforms-custom';
@@ -16,7 +16,7 @@ import debounce from '/imports/utils/debounce';
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   let selector = buildKeywordRegexSelector(selectorOptions.get().keyword, ['isim'], {});
 
@@ -32,7 +32,7 @@ export default createContainer(props => {
     count: cursor && cursor.count(),
   };
 
-}, class Markalar extends Component {
+})(class Markalar extends Component {
 
   constructor(props) {
     super(props);

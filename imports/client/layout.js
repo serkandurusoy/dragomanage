@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React from 'react';
 import {
   Grid,
@@ -15,7 +15,7 @@ import {
   YetkiYok,
 } from '/imports/client/components';
 
-export default createContainer(() => {
+export default withTracker(() => {
 
   let currentUser = Meteor.user();
   let yetkiVar = false;
@@ -54,7 +54,7 @@ export default createContainer(() => {
     yetkiVar,
   };
 
-}, function Layout({
+})(function Layout({
   currentUser,
   loggingIn,
   accountsConfigured,

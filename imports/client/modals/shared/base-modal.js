@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Loading, Versions, ModalHeader, ModalFooter, GirisKayitlari } from '/imports/client/components';
 import { formHandlers } from '/imports/utils/client/form-handlers';
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   let record;
   let versions;
@@ -25,7 +25,7 @@ export default createContainer(props => {
     versions,
   };
 
-}, class BaseModal extends Component {
+})(class BaseModal extends Component {
 
   state = { errors: null }
 

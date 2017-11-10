@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Row, Col, Table } from 'react-bootstrap';
 import { Container, PageHeader } from '/imports/client/components';
 import { Bakiye, Kasalar, Kurlar } from '/imports/api/model';
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   const kasa = ((Bakiye.Kasa.find().fetch().reduce((toplam, bakiye) =>
     toplam + (bakiye.tutarX100 * Kurlar.findOne({tarih: Date.today()})[Kasalar.findOne(bakiye.kasa).kur])
@@ -42,7 +42,7 @@ export default createContainer(props => {
     records,
   }
 
-}, class Ozet extends Component {
+})(class Ozet extends Component {
 
   render() {
 

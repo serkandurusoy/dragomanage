@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 import { Row, Col, Table } from 'react-bootstrap';
 import { AutoForm, TextField } from '/imports/client/components/uniforms-bootstrap3';
 import { SelectField, DateTimeField } from '/imports/client/components/uniforms-custom';
@@ -16,7 +16,7 @@ import { cariKart, urun } from '/imports/api/methods';
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe('talepler', {selectorOptions: selectorOptions.get(), limit: limit.get()}),
@@ -79,7 +79,7 @@ export default createContainer(props => {
     count: cursor && cursor.count(),
   };
 
-}, class Talepler extends Component {
+})(class Talepler extends Component {
 
   constructor(props) {
     super(props);

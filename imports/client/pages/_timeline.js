@@ -1,6 +1,6 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 import { Row, Col, Table, Button } from 'react-bootstrap';
 import { AutoForm, TextField } from '/imports/client/components/uniforms-bootstrap3';
 import { SelectField, DateTimeField } from '/imports/client/components/uniforms-custom';
@@ -14,7 +14,7 @@ import debounce from '/imports/utils/debounce';
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
 
-export default createContainer(props => {
+export default withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe('timeline', {selectorOptions: selectorOptions.get(), limit: limit.get()}),
@@ -62,7 +62,7 @@ export default createContainer(props => {
     reference: selectorOptions.get().reference,
   };
 
-}, class Timeline extends Component {
+})(class Timeline extends Component {
 
   constructor(props) {
     super(props);

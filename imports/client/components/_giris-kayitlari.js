@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import {
@@ -13,7 +13,7 @@ import { GirisKayitlari as Collection } from '/imports/api/model';
 
 const limit = new ReactiveVar(LIMIT);
 
-const Tarihce = createContainer(props => {
+const Tarihce = withTracker(props => {
 
   const subscriptionsReady = [
     Meteor.subscribe('userGirisKayitlari', {userId: props.userId, limit: limit.get()}),
@@ -27,7 +27,7 @@ const Tarihce = createContainer(props => {
     count: cursor && cursor.count(),
   };
 
-}, class Tarihce extends Component {
+})(class Tarihce extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     const { subscriptionsLoading, count } = nextProps;
