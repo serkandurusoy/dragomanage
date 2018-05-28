@@ -1,4 +1,4 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { KURLAR } from '/imports/environment/enums';
 
@@ -16,22 +16,18 @@ Kurlar.Schema = new SimpleSchema({
   },
   [KURLAR.TRY.value]: {
     type: Number,
-    decimal: true,
     autoValue() {
       return 1;
     }
   },
   [KURLAR.USD.value]: {
     type: Number,
-    decimal: true,
   },
   [KURLAR.EUR.value]: {
     type: Number,
-    decimal: true,
   },
   [KURLAR.GBP.value]: {
     type: Number,
-    decimal: true,
   },
 });
 

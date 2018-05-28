@@ -11,6 +11,7 @@ import { Kurlar } from '/imports/api/model';
 import { KURLAR } from '/imports/environment/enums';
 import { LIMIT } from '/imports/environment/meta';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -89,7 +90,7 @@ export default withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Kurlar" toggleSearchPane={this.toggleSearchPane} hideAddButton={true} />
       {
         this.state.searchPane &&

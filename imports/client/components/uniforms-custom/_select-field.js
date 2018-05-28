@@ -100,7 +100,7 @@ class Select extends Component {
       matchProp={props.matchProp}
       ignoreCase={props.ignoreCase}
       autoBlur={props.autoBlur}
-      autofocus={props.autofocus}
+      autoFocus={props.autoFocus}
       autoload={props.autoload}
       autosize={props.autosize === false ? false : true}
       backspaceRemoves={props.backspaceRemoves}

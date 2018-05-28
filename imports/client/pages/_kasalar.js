@@ -12,6 +12,7 @@ import { KASALAR, KURLAR } from '/imports/environment/enums';
 import { LIMIT, YETKILER } from '/imports/environment/meta';
 import buildKeywordRegexSelector from '/imports/utils/build-keyword-regex-selector';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -99,7 +100,7 @@ export default withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Kasalar" toggleSearchPane={this.toggleSearchPane} modalOpen={this.modalOpen}/>
       {
         this.state.searchPane &&

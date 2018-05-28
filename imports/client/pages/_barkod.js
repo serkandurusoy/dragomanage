@@ -11,6 +11,7 @@ import { Urunler } from '/imports/api/model';
 import JSBarcode from 'jsbarcode';
 import jsPDF from 'jspdf';
 import moment from 'moment-timezone';
+import SimpleSchema from 'simpl-schema';
 
 // https://github.com/lindell/JsBarcode/wiki/Options
 // we also installed barcode-scan-listener but we're not using it yet
@@ -87,7 +88,7 @@ export default class Barkod extends Component {
 
     const {list} = this.state;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Barkod" hideAddButton={true} />
       <Row className="searchRow">
         <AutoForm

@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { Etiketler, Markalar, Siniflar, Bakiye, Konumlar } from './';
 import { ETIKETLER, URUNLER, KDVLER, SINIFLAR, MENSEILER, KURLAR } from '/imports/environment/enums';
@@ -31,7 +31,7 @@ Urunler.Schema = new SimpleSchema({
   },
   etiketler: {
     label: 'Etiketler',
-    type: [String],
+    type: Array,
     index: 1,
     autoValue() {
       if (!this.isSet || this.value === null) {

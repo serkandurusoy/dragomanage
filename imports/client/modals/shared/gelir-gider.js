@@ -22,6 +22,7 @@ import {
 } from '/imports/environment/enums';
 import { iptalOnayiSchema } from '/imports/environment/schema-globals';
 import { cariKart, urun } from '/imports/api/methods';
+import SimpleSchema from 'simpl-schema';
 
 const selectedUrunId = new ReactiveVar(null);
 const selectedKonum = new ReactiveVar(null);
@@ -86,7 +87,7 @@ export default withTracker(props => {
         className={staticForm && 'form-static'}
         staticForm={staticForm}
         ref={ref => setFormRef && setFormRef(ref)}
-        schema={!updateForm ? schema : new SimpleSchema([schema, iptalOnayiSchema])}
+        schema={!updateForm ? schema : new SimpleSchema(schema).extend(iptalOnayiSchema)}
         onValidate={(model, error, callback) => {
           if (updateForm) {
             if (record.islemTarihi.daysApartFromNow() < 90) {

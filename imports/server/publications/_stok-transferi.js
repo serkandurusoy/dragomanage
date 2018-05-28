@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { StokTransferleri, Urunler } from '/imports/api/model';
 import { YETKILER } from '/imports/environment/meta';
 

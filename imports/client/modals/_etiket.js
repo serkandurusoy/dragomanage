@@ -9,6 +9,7 @@ import {
   TextField,
   BoolField,
 } from '/imports/client/components/uniforms-bootstrap3';
+import SimpleSchema from 'simpl-schema';
 import { SelectField } from '/imports/client/components/uniforms-custom';
 import { Etiketler } from '/imports/api/model';
 import { ETIKETLER } from '/imports/environment/enums';
@@ -42,7 +43,7 @@ class Kart extends Component {
       className={staticForm && 'form-static'}
       staticForm={staticForm}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, guncellemeBeyaniSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend(guncellemeBeyaniSchema)}
       model={record}
       onSubmit={onSubmit}
       onChange={onChange}

@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { ValidationError } from 'meteor/mdg:validation-error';
 import { YETKILER } from '/imports/environment/meta';
@@ -96,7 +96,7 @@ export const gider = {
         type: String,
       },
       doc: {
-        type: new SimpleSchema([Giderler.Schema, iptalOnayiSchema]),
+        type: new SimpleSchema(Giderler.Schema).extend(iptalOnayiSchema),
       },
     }).validator({clean: true}),
 

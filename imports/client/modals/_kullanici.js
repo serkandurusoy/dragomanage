@@ -16,6 +16,7 @@ import { YETKILER, ROLLER } from '/imports/environment/meta';
 import { guncellemeBeyaniSchema } from '/imports/environment/schema-globals';
 import { kullanici as formMethod} from '/imports/api/methods';
 import BaseModal from './shared/base-modal';
+import SimpleSchema from 'simpl-schema';
 
 export const KullaniciModal = (props) => <BaseModal
   kart={Kart}
@@ -43,7 +44,7 @@ class Kart extends Component {
       className={staticForm && 'form-static'}
       staticForm={staticForm}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, guncellemeBeyaniSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend(guncellemeBeyaniSchema)}
       model={record}
       onSubmit={onSubmit}
       onChange={onChange}

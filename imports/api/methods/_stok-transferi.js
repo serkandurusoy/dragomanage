@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { ValidationError } from 'meteor/mdg:validation-error';
 import { YETKILER } from '/imports/environment/meta';
@@ -22,7 +22,6 @@ export const stokTransferi = {
     validate: StokTransferleri.Schema.validator({clean: true}),
 
     run(doc) {
-
       if (doc.adet === 0) {
         throw new ValidationError([
           {
@@ -69,7 +68,7 @@ export const stokTransferi = {
         type: String,
       },
       doc: {
-        type: new SimpleSchema([StokTransferleri.Schema, iptalOnayiSchema]),
+        type: new SimpleSchema(StokTransferleri.Schema).extend(iptalOnayiSchema),
       },
     }).validator({clean: true}),
 

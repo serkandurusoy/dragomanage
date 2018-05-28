@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { CariKartlar, Bakiye } from '/imports/api/model';
 import { YETKILER } from '/imports/environment/meta';
 import buildKeywordRegexSelector from '/imports/utils/build-keyword-regex-selector';
@@ -35,7 +35,7 @@ const filterSchema = new SimpleSchema({
     optional: true,
   },
   'selectorOptions.etiketler': {
-    type: [String],
+    type: Array,
     optional: true,
   },
   'selectorOptions.etiketler.$': {

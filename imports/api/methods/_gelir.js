@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { ValidationError } from 'meteor/mdg:validation-error';
 import { YETKILER } from '/imports/environment/meta';
@@ -22,7 +22,6 @@ export const gelir = {
     validate: Gelirler.Schema.validator({clean: true}),
 
     run(doc) {
-
       if (!this.isSimulation && !CariKartlar.findOne(doc.cariKart)) {
         throw new ValidationError([
           {
@@ -106,12 +105,11 @@ export const gelir = {
         type: String,
       },
       doc: {
-        type: new SimpleSchema([Gelirler.Schema, iptalOnayiSchema]),
+        type: new SimpleSchema(Gelirler.Schema).extend(iptalOnayiSchema),
       },
     }).validator({clean: true}),
 
     run({_id, doc: { iptalAciklamasi }}) {
-
       const previousGelir = Gelirler.findOne(_id);
 
       const doc = Object.assign({}, previousGelir, {
@@ -122,11 +120,8 @@ export const gelir = {
         tutarX100TL: 0,
         aciklama: `İptal nedeni: ${iptalAciklamasi}`,
       });
-
       const modifier = docToModifier(Gelirler.Schema, doc);
-
       const gelir = Gelirler.update(_id, modifier);
-
       bakiye.stok.artir(previousGelir.urun, previousGelir.konum, previousGelir.adet);
       bakiye.cari.artir(previousGelir.cariKart, previousGelir.tutarX100TL);
 

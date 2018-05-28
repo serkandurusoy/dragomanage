@@ -1,5 +1,5 @@
 import React from 'react';
-import { useScroll } from 'react-router-scroll';
+/*import { useScroll } from 'react-router-scroll';
 import {
   applyRouterMiddleware,
   Router,
@@ -7,7 +7,12 @@ import {
   Route,
   IndexRedirect,
   browserHistory,
-} from 'react-router';
+} from 'react-router';*/
+import {
+  Route,
+  BrowserRouter,
+  Switch
+} from 'react-router-dom';
 import { YETKILER } from '/imports/environment/meta';
 
 import Layout from './layout';
@@ -44,6 +49,59 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 
+
+export default function AppRouter() {
+  return <div>
+    <BrowserRouter >
+      <Layout clearAlerts={clearAlerts}>
+        <Switch>
+          <Route exact path='/' component={()=><Timeline yetki={YETKILER.PUBLIC.value}/>} />
+          <Route exact path="/tanimlar" component={()=><CariKartlar yetki={YETKILER.CARI_KARTLAR.value}/>} />
+          <Route exact path="/tanimlar/cari-kartlar" component={()=><CariKartlar yetki={YETKILER.CARI_KARTLAR.value}/>} />
+          <Route exact path="/tanimlar/urunler" component={()=><Urunler yetki={YETKILER.URUNLER.value}/>} />
+          <Route exact path="/tanimlar/markalar" component={()=><Markalar yetki={YETKILER.URUNLER.value}/>} />
+          <Route exact path="/tanimlar/etiketler" component={()=><Etiketler  yetki={YETKILER.TANIMLAR.value}/>}/>
+          <Route exact path="/tanimlar/siniflar" component={()=><Siniflar yetki={YETKILER.TANIMLAR.value}/>} />
+          <Route exact path="/tanimlar/kasalar" component={()=><Kasalar yetki={YETKILER.TANIMLAR.value}/>} />
+          <Route exact path="/tanimlar/konumlar" component={()=><Konumlar yetki={YETKILER.TANIMLAR.value}/>} />
+          <Route exact path="/tanimlar/kullanicilar" component={()=><Kullanicilar yetki={YETKILER.SECRET.value}/>} />
+
+          <Route exact path="/kayitlar" component={()=><Tahsilatlar yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/tahsilatlar" component={()=><Tahsilatlar yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/odemeler" component={()=> <Odemeler yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/kasa-transferleri" component={()=><KasaTransferleri yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/gelirler" component={()=><Gelirler yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/giderler" component={()=><Giderler yetki={YETKILER.MUHASEBE.value}/>} />
+          <Route exact path="/kayitlar/stok-transferleri" component={()=><StokTransferleri yetki={YETKILER.URUNLER.value}/>} />
+          <Route exact path="/kayitlar/talepler" component={()=><Talepler yetki={YETKILER.TALEPLER.value}/>} />
+
+          <Route exact path="/raporlar" component={()=><Ozet yetki={YETKILER.RAPOR_MUHASEBE.value}/>}/>
+          <Route exact path="/raporlar/ozet" component={()=><Ozet yetki={YETKILER.RAPOR_MUHASEBE.value}/>} />
+          <Route exact path="/raporlar/kasa-bakiyeleri" component={()=><KasaBakiyeleri yetki={YETKILER.RAPOR_MUHASEBE.value}/>} />
+          <Route exact path="/raporlar/kasa-acilis-bakiyeleri" component={()=><KasaAcilisBakiyeleri yetki={YETKILER.RAPOR_MUHASEBE.value}/>} />
+          <Route exact path="/raporlar/cari-bakiyeler" component={()=><CariBakiyeler yetki={YETKILER.RAPOR_MUHASEBE.value}/>} />
+          <Route exact path="/raporlar/cari-acilis-bakiyeler" component={()=><CariAcilisBakiyeler yetki={YETKILER.RAPOR_MUHASEBE.value}/>} />
+          <Route exact path="/raporlar/stok-bakiyeleri" component={()=><StokBakiyeleri yetki={YETKILER.RAPOR_URUN.value}/>} />
+          <Route exact path="/raporlar/stok-acilis-bakiyeleri" component={()=><StokAcilisBakiyeleri yetki={YETKILER.RAPOR_URUN.value}/>} />
+          <Route exact path="/raporlar/barkod" component={()=><Barkod yetki={YETKILER.RAPOR_URUN.value}/>} />
+          <Route exact path="/raporlar/fiyat-listesi" component={()=><FiyatListesi yetki={YETKILER.PUBLIC.value}/>} />
+          <Route exact path="/raporlar/kurlar" component={()=><Kurlar yetki={YETKILER.PUBLIC.value}/>} />
+          <Route path="*" component={()=><NotFound yetki={YETKILER.PUBLIC.value}/>} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
+    <Alert
+      stack={true}
+      timeout={5000}
+      effect="genie"
+      position="bottom"
+      html={true}
+    />
+  </div>
+};
+
+
+/*
 export default function AppRouter() {
   return <div>
     <Router
@@ -96,7 +154,7 @@ export default function AppRouter() {
       html={true}
     />
   </div>
-};
+};*/
 
 function clearAlerts() {
   Alert.closeAll();

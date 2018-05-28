@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { ValidationError } from 'meteor/mdg:validation-error';
 import { YETKILER } from '/imports/environment/meta';
@@ -19,9 +19,8 @@ export const urun = {
     yetkiler: [YETKILER.RAPOR_URUN],
 
     validate: new SimpleSchema({
-      list: {
-        type: [String],
-      },
+      list:  {type:Array},
+      'list.$':{type: String},
     }).validator({clean: true}),
 
     run({list}) {
@@ -113,7 +112,6 @@ export const urun = {
     validate: Urunler.Schema.validator({clean: true}),
 
     run(doc) {
-
       if (!this.isSimulation) {
         let selector = {
           $or: [

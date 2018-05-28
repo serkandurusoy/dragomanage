@@ -4,11 +4,12 @@ import { iptalOnayiSchema } from '/imports/environment/schema-globals';
 import { gelir as formMethod } from '/imports/api/methods';
 import BaseModal from './shared/base-modal';
 import Kart from './shared/gelir-gider';
+import SimpleSchema from 'simpl-schema';
 
 export const GelirModal = (props) => <BaseModal
   kart={Kart}
   collection={Gelirler}
-  schema={props.operation === 'update' && new SimpleSchema([Gelirler.Schema, iptalOnayiSchema])}
+  schema={props.operation === 'update' && new SimpleSchema(Gelirler.Schema).extend( iptalOnayiSchema)}
   subscription="gelir"
   formMethod={formMethod}
   title="Gelir"

@@ -10,6 +10,7 @@ import { ETIKETLER  } from '/imports/environment/enums';
 import debounce from '/imports/utils/debounce';
 import { Etiketler, Kasalar, Kullanicilar } from '/imports/api/model';
 import { cariKart } from '/imports/api/methods';
+import SimpleSchema from 'simpl-schema';
 
 export const OdemeTahsilat = withTracker(props => {
 
@@ -148,7 +149,7 @@ export const OdemeTahsilat = withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title={this.props.title} toggleSearchPane={this.toggleSearchPane} modalOpen={this.modalOpen} dokumPath={this.props.dokumPath} />
       {
         this.state.searchPane &&
@@ -156,7 +157,7 @@ export const OdemeTahsilat = withTracker(props => {
           <AutoForm
             validate="onChange"
             schema={new SimpleSchema({
-              etiketler: {type: [String], optional: true},
+              etiketler: {type: Array, optional: true},'etiketler.$':{type:String},
               iptal: {type: Boolean, optional: true},
               cariKart: {type: String, optional: true},
               gerceklestiren: {type: String, optional: true},

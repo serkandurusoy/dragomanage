@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { withTracker } from 'meteor/react-meteor-data';
-import React from 'react';
+import React, {Component} from 'react';
 import {
   Grid,
   Row,
@@ -54,20 +54,28 @@ export default withTracker(() => {
     yetkiVar,
   };
 
-})(function Layout({
-  currentUser,
-  loggingIn,
-  accountsConfigured,
-  subscriptionsLoading,
-  yetkiVar,
-  children,
-}) {
-  return currentUser ? (
-    subscriptionsLoading
-      ? <Loading/>
-      : !yetkiVar
-      ? <YetkiYok/>
-      : <div>
+})(class Layout extends Component {
+
+  componentWillMount(){
+    this.props.clearAlerts();
+  }
+
+  render(){
+    const {
+      currentUser,
+      loggingIn,
+      accountsConfigured,
+      subscriptionsLoading,
+      yetkiVar,
+      children,
+    } = this.props;
+
+    return currentUser ? (
+      subscriptionsLoading
+        ? <Loading/>
+        : !yetkiVar
+        ? <YetkiYok/>
+        : <div>
           <Navigation/>
           <Grid fluid>
             <Row>
@@ -88,9 +96,55 @@ export default withTracker(() => {
             </Row>
           </Grid>
         </div>
+    ) : loggingIn
+      ? <Loading />
+      : accountsConfigured
+        ? <Login />
+        : <Loading />;
+  }
+
+})
+
+
+
+
+/*(function Layout({
+                   currentUser,
+                   loggingIn,
+                   accountsConfigured,
+                   subscriptionsLoading,
+                   yetkiVar,
+                   children,
+                 }) {
+  return currentUser ? (
+    subscriptionsLoading
+      ? <Loading/>
+      : !yetkiVar
+      ? <YetkiYok/>
+      : <div>
+        <Navigation/>
+        <Grid fluid>
+          <Row>
+            <Col xs={12} className="connectionStatus">
+              <ConnectionStatus />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <Row>
+                <Col xs={12} className="mainContent">
+                  <div className="content">
+                    {children}
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
   ) : loggingIn
     ? <Loading />
     : accountsConfigured
-    ? <Login />
-    : <Loading />;
-})
+      ? <Login />
+      : <Loading />;
+})*/

@@ -7,11 +7,11 @@ import {
   NavItem,
   MenuItem,
 } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Logo, ProfileMenu } from './';
 import { YETKILER } from '/imports/environment/meta';
 
-export default withTracker(() => {
+export default withRouter(withTracker(() => {
 
   let currentUser = Meteor.user();
   const kullanici = currentUser && currentUser.kullanici();
@@ -28,13 +28,15 @@ export default withTracker(() => {
     }
 
     setExpand = (e) => {
-      browserHistory.push('/')
+      this.props.history.push('/')
+      //browserHistory.push('/')
       this.setState({expanded: false});
     }
 
     goTo = (key,e) => {
       e.preventDefault();
-      browserHistory.push(e.target.getAttribute('href'))
+      this.props.history.push(e.target.getAttribute('href'))
+      //browserHistory.push(e.target.getAttribute('href'))
     }
 
     render() {
@@ -90,4 +92,4 @@ export default withTracker(() => {
       )
     }
   }
-)
+))

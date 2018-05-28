@@ -1,4 +1,4 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import {
   DILLER,
   ULKELER,
@@ -30,7 +30,7 @@ export const sahisBilgileri = new SimpleSchema({
   },
   diller: {
     label: 'Diller',
-    type: [String],
+    type: Array,
   },
   'diller.$': {
     label: 'Diller',

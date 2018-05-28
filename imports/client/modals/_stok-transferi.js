@@ -17,11 +17,12 @@ import {
 import { iptalOnayiSchema } from '/imports/environment/schema-globals';
 import { stokTransferi as formMethod, urun } from '/imports/api/methods';
 import BaseModal from './shared/base-modal';
+import SimpleSchema from 'simpl-schema';
 
 export const StokTransferiModal = (props) => <BaseModal
   kart={Kart}
   collection={StokTransferleri}
-  schema={props.operation === 'update' && new SimpleSchema([StokTransferleri.Schema, iptalOnayiSchema])}
+  schema={props.operation === 'update' && new SimpleSchema(StokTransferleri.Schema).extend(iptalOnayiSchema)}
   subscription="stokTransferi"
   formMethod={formMethod}
   title="Stok transferi"
@@ -45,7 +46,7 @@ class Kart extends Component {
       className={staticForm && 'form-static'}
       staticForm={staticForm}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, iptalOnayiSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend( iptalOnayiSchema)}
       onValidate={(model, error, callback) => {
         if (updateForm) {
           if (record.islemTarihi.daysApartFromNow() < 90) {

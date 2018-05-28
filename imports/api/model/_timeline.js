@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { COLLECTIONS } from '/imports/environment/meta';
 
@@ -48,9 +48,12 @@ Timeline.Schema = new SimpleSchema({
     type: Number,
   },
   references: {
-    type: [String],
+    type: Array,
     index: 1,
-  }
+  },
+  'references.$':{
+    type: String,
+  },
 });
 
 Timeline.attachSchema(Timeline.Schema);

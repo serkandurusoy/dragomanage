@@ -1,12 +1,12 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { CariKartlar, Kasalar, Kullanicilar, Etiketler, Kurlar } from '../';
 import { ETIKETLER, KURLAR, KASALAR } from '/imports/environment/enums';
 
 export const odemeTahsilat = new SimpleSchema({
   etiketler: {
     label: 'Etiketler',
-    type: [String],
+    type: Array,
     index: 1,
     autoValue() {
       if (!this.isSet || this.value === null) {

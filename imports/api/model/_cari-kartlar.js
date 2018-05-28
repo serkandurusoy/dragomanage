@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import IBAN from 'iban';
 import { Etiketler } from './';
@@ -20,7 +20,7 @@ CariKartlar.Schema = new SimpleSchema({
   },
   etiketler: {
     label: 'Etiketler',
-    type: [String],
+    type: Array,
     index: 1,
     autoValue() {
       if (!this.isSet || this.value === null) {

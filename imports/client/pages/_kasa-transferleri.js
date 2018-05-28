@@ -10,6 +10,7 @@ import { KasaTransferleri, Kasalar } from '/imports/api/model';
 import { KasaTransferiModal as modal } from '/imports/client/modals';
 import { LIMIT, YETKILER } from '/imports/environment/meta';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -136,7 +137,7 @@ export default withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Kasa transferleri" toggleSearchPane={this.toggleSearchPane} modalOpen={this.modalOpen} dokumPath="KasaTransferleri" />
       {
         this.state.searchPane &&

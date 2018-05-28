@@ -23,6 +23,7 @@ import {
 import { guncellemeBeyaniSchema } from '/imports/environment/schema-globals';
 import { urun as formMethod } from '/imports/api/methods';
 import BaseModal from './shared/base-modal';
+import SimpleSchema from 'simpl-schema';
 
 export const UrunModal = (props) => <BaseModal
   kart={Kart}
@@ -61,7 +62,7 @@ class Kart extends Component {
         return model;
       }}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, guncellemeBeyaniSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend(guncellemeBeyaniSchema)}
       model={record}
       onSubmit={onSubmit}
       onChange={onChange}

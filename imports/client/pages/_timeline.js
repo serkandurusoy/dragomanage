@@ -10,6 +10,7 @@ import * as modals from '/imports/client/modals';
 import { LIMIT, COLLECTIONS } from '/imports/environment/meta';
 import FontAwesome from 'react-fontawesome';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -132,7 +133,7 @@ export default withTracker(props => {
       reference,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="İşlem geçmişi" hideAddButton={true} toggleSearchPane={this.toggleSearchPane} />
       {
         this.state.searchPane &&

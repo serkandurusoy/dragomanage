@@ -9,6 +9,7 @@ import { NumberField } from '/imports/client/components/uniforms-custom';
 import { Kurlar } from '/imports/api/model';
 import { KURLAR } from '/imports/environment/enums';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 export default withTracker(() => {
 

@@ -1,4 +1,4 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 
 export const selectorSchema = new SimpleSchema({
   selectorOptions: {
@@ -25,7 +25,7 @@ export const selectorSchema = new SimpleSchema({
     optional: true,
   },
   'selectorOptions.etiketler': {
-    type: [String],
+    type: Array,
     optional: true,
   },
   'selectorOptions.etiketler.$': {

@@ -10,6 +10,7 @@ import { ETIKETLER  } from '/imports/environment/enums';
 import debounce from '/imports/utils/debounce';
 import { Etiketler, Kullanicilar } from '/imports/api/model';
 import { cariKart, urun } from '/imports/api/methods';
+import SimpleSchema from 'simpl-schema';
 
 export const GelirGider = withTracker(props => {
 
@@ -153,7 +154,7 @@ export const GelirGider = withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title={this.props.title} toggleSearchPane={this.toggleSearchPane} modalOpen={this.modalOpen} dokumPath={this.props.dokumPath} />
       {
         this.state.searchPane &&
@@ -161,7 +162,7 @@ export const GelirGider = withTracker(props => {
           <AutoForm
             validate="onChange"
             schema={new SimpleSchema({
-              etiketler: {type: [String], optional: true},
+              etiketler: {type: Array, optional: true},'etiketler.$':{type:String},
               iptal: {type: Boolean, optional: true},
               cariKart: {type: String, optional: true},
               gerceklestiren: {type: String, optional: true},

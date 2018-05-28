@@ -43,7 +43,7 @@ Meteor.startup(() => {
   }
 
   window.addEventListener("beforeunload", () => {
-    if (store.enabled) {
+    /*if (store.enabled) {
       const oldCountStored = storeWithExpiration.get('dmTabCount');
       const oldCount = oldCountStored ? parseInt(oldCountStored, 10) : 0;
       tabCount = oldCount - 1;
@@ -54,7 +54,7 @@ Meteor.startup(() => {
       if (Meteor.isProduction || (Meteor.isDevelopment && !store.get('noLogout'))) {
         Meteor.logout();
       }
-    }
+    }*/
   });
 
   WebFont.load({

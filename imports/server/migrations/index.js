@@ -12,7 +12,7 @@ import resetTimestamps from './_reset-timestamps';
 import updateProductionUrunFiyat from './_update-production-urun-fiyat';
 
 const Migrations = new Mongo.Collection('migrations');
-const MIGRATION_VERSION = 2;
+const MIGRATION_VERSION = 1;
 
 if (Meteor.isDevelopment) {
 
@@ -22,23 +22,23 @@ if (Meteor.isDevelopment) {
 
     if (!lastMigration || lastMigration.version < MIGRATION_VERSION) {
 
-      // Migration version 1
-      // createKullaniciFixture();
-      // createKasaFixture();
-      // createMusteriFixture();
-      // createCariKartFixture();
-      // createUrunFixture();
-      // createGiderFixture();
-      //
-      // resetTimestamps();
+      //Migration version 1
+      createKullaniciFixture();
+      createKasaFixture();
+      createMusteriFixture();
+      createCariKartFixture();
+      createUrunFixture();
+      createGiderFixture();
 
-      // Migration version 2
-      // updateProductionUrunFiyat();
+      resetTimestamps();
 
-      // Migrations.insert({
-      //   version: MIGRATION_VERSION,
-      //   date: new Date(),
-      // });
+      //Migration version 2
+      updateProductionUrunFiyat();
+
+      Migrations.insert({
+        version: MIGRATION_VERSION,
+        date: new Date(),
+      });
 
     }
 

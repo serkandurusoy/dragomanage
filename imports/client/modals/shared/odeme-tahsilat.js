@@ -17,6 +17,7 @@ import {
 } from '/imports/environment/enums';
 import { iptalOnayiSchema } from '/imports/environment/schema-globals';
 import { cariKart } from '/imports/api/methods';
+import SimpleSchema from 'simpl-schema';
 
 export default class Kart extends Component {
   render() {
@@ -35,7 +36,7 @@ export default class Kart extends Component {
       className={staticForm && 'form-static'}
       staticForm={staticForm}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, iptalOnayiSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend(iptalOnayiSchema)}
       onValidate={(model, error, callback) => {
         if (updateForm) {
           if (record.islemTarihi.daysApartFromNow() < 90) {

@@ -48,7 +48,7 @@ export default withTracker(props => {
 
     const {records} = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Özet" hideAddButton={true} />
       <Row>
         <Col xs={12}>

@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Urunler, Bakiye } from '/imports/api/model';
 import { YETKILER } from '/imports/environment/meta';
 import buildKeywordRegexSelector from '/imports/utils/build-keyword-regex-selector';
@@ -47,6 +47,7 @@ Meteor.publish('urun', function(args) {
 const filterSchema = new SimpleSchema({
   selectorOptions: {
     type: Object,
+    blackbox: true,
   },
   'selectorOptions.keyword': {
     type: String,
@@ -61,7 +62,7 @@ const filterSchema = new SimpleSchema({
     optional: true,
   },
   'selectorOptions.etiketler': {
-    type: [String],
+    type: Array,
     optional: true,
   },
   'selectorOptions.etiketler.$': {
@@ -104,12 +105,18 @@ const fields = {
 }
 
 Meteor.publish('urunler', function(args) {
-  new SimpleSchema([filterSchema, new SimpleSchema({
+  new SimpleSchema(new SimpleSchema(filterSchema).extend(new SimpleSchema({
+    selectorOptions: {
+      type: Object,
+      blackbox: true,
+    },
     'selectorOptions.satilabilir': {
       type: Boolean,
       optional: true,
+
     },
-  })]).validate(args);
+  }))).validate(args);
+
   this.unblock();
   const yetkili = this.userId && Meteor.users.findOne(this.userId).yetkili(YETKILER.URUNLER.value);
   if (yetkili) {

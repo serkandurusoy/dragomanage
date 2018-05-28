@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { YETKILER, ROLLER, COLLECTIONS } from '/imports/environment/meta';
 import { Timeline } from './_timeline';
@@ -55,7 +55,7 @@ Kullanicilar.Schema = new SimpleSchema({
   },
   yetkiler: {
     label: 'Yetkiler',
-    type: [String],
+    type: Array,
     defaultValue: [],
   },
   'yetkiler.$': {

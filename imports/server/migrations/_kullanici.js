@@ -19,6 +19,13 @@ export default function createKullaniciFixture() {
       rol: ROLLER.ADMIN.value,
     },
     {
+      email: 'gokalp@dragoman-turkey.com',
+      ad: 'Gökalp',
+      soyad: 'Urul',
+      gizli: false,
+      rol: ROLLER.ADMIN.value,
+    },
+    {
       email: 'murat@dragoman-turkey.com',
       ad: 'Murat',
       soyad: 'Draman',

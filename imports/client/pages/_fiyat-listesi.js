@@ -11,6 +11,7 @@ import { ETIKETLER, URUNLER, SINIFLAR, KURLAR } from '/imports/environment/enums
 import { LIMIT } from '/imports/environment/meta';
 import buildKeywordRegexSelector from '/imports/utils/build-keyword-regex-selector';
 import debounce from '/imports/utils/debounce';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -109,7 +110,7 @@ export default withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Fiyat listesi" toggleSearchPane={this.toggleSearchPane} hideAddButton={true} />
       {
         this.state.searchPane &&
@@ -117,7 +118,7 @@ export default withTracker(props => {
           <AutoForm
             validate="onChange"
             schema={new SimpleSchema({
-              etiketler: {type: [String], optional: true},
+              etiketler: {type: Array, optional: true},'etiketler.$':{type:String},
               keyword: {type: String, optional: true},
               tip: {type: String, optional: true},
               sinif: {type: String, optional: true},

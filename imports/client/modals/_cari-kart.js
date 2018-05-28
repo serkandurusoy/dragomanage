@@ -11,6 +11,7 @@ import {
   SelectField as CheckboxListField,
   BoolField,
 } from '/imports/client/components/uniforms-bootstrap3';
+import SimpleSchema from 'simpl-schema';
 import { NumberField, SelectField, DateTimeField, DisplayIfField } from '/imports/client/components/uniforms-custom';
 import { CariKartlar, Etiketler } from '/imports/api/model';
 import {
@@ -61,7 +62,7 @@ class Kart extends Component {
         return model;
       }}
       ref={ref => setFormRef && setFormRef(ref)}
-      schema={!updateForm ? schema : new SimpleSchema([schema, guncellemeBeyaniSchema])}
+      schema={!updateForm ? schema : new SimpleSchema(schema).extend(guncellemeBeyaniSchema)}
       model={record}
       onSubmit={onSubmit}
       onChange={onChange}

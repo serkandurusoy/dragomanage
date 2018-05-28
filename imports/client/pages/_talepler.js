@@ -12,6 +12,7 @@ import { LIMIT, YETKILER } from '/imports/environment/meta';
 import { TALEPLER } from '/imports/environment/enums';
 import debounce from '/imports/utils/debounce';
 import { cariKart, urun } from '/imports/api/methods';
+import SimpleSchema from 'simpl-schema';
 
 const selectorOptions = new ReactiveVar({});
 const limit = new ReactiveVar(LIMIT);
@@ -148,7 +149,7 @@ export default withTracker(props => {
       count,
     } = this.props;
 
-    return <Container yetki={this.props.route.yetki}>
+    return <Container yetki={this.props.yetki}>
       <PageHeader title="Talepler" toggleSearchPane={this.toggleSearchPane} modalOpen={this.modalOpen} />
       {
         this.state.searchPane &&

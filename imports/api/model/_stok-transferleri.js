@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { COLLECTIONS } from '/imports/environment/meta';
 import { KONUMLAR } from '/imports/environment/enums';
