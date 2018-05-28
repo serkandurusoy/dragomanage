@@ -2,8 +2,11 @@
   "name": "dragomanage",
   "private": true,
   "scripts": {
-    "start": "TZ=Etc/UTC MONGO_URL=mongodb://localhost:27017/dragomanage MONGO_OPLOG_URL=mongodb://localhost:27017/local meteor run --settings settings.json"
-  },
+    "start": "TZ=Etc/UTC MONGO_URL=mongodb://localhost:27017/dragomanage MONGO_OPLOG_URL=mongodb://localhost:27017/local meteor run --settings settings.json",
+    "lintfix": "./node_modules/.bin/eslint --fix filename"
+  }
+,
+
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "barcode-scan-listener": "^2.0.4",
@@ -43,7 +46,15 @@
   },
   "devDependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.8.2",
+    "prettier": "^1.13.0"
   },
   "babel": {
     "plugins": [
