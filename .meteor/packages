@@ -4,14 +4,13 @@ reactive-var@1.0.11
 tracker@1.1.3
 
 force-ssl@1.1.0
-
-aldeed:simple-schema
-aldeed:collection2
+aldeed:collection2@3.0.0
+aldeed:schema-index
+aldeed:schema-deny
 dburles:collection-helpers
 matb33:collection-hooks
 mickaelfm:vermongo
 
-audit-argument-checks@1.0.7
 meteorhacks:unblock
 reywood:publish-composite
 mdg:validation-error
