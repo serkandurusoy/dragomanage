@@ -4,9 +4,7 @@
   "scripts": {
     "start": "TZ=Etc/UTC MONGO_URL=mongodb://localhost:27017/dragomanage MONGO_OPLOG_URL=mongodb://localhost:27017/local meteor run --settings settings.json",
     "lintfix": "./node_modules/.bin/eslint --fix filename"
-  }
-,
-
+  },
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "barcode-scan-listener": "^2.0.4",
