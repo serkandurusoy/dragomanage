@@ -12,8 +12,12 @@ export const selectorSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  'selectorOptions.dosyaNo': {
+  /*'selectorOptions.dosyaNo': {
     type: String,
+    optional: true,
+  },*/
+  'selectorOptions.vadeTarihi': {
+    type: Date,
     optional: true,
   },
   'selectorOptions.gerceklestiren': {
@@ -86,8 +90,11 @@ export const buildSelector = function(args) {
       selector.$and.push({ urun: options.urun });
     }
 
-    if (options.dosyaNo) {
+    /*if (options.dosyaNo) {
       selector.$and.push({ dosyaNo: options.dosyaNo });
+    }*/
+    if (options.vadeTarihi) {
+      selector.$and.push({ vadeTarihi: { $lte: options.vadeTarihi.add(1,'d')} });
     }
 
     if (options.islemTarihiBegin) {

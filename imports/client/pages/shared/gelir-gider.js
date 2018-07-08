@@ -59,8 +59,12 @@ export const GelirGider = withTracker(props => {
       selector.$and.push({ urun: options.urun });
     }
 
-    if (options.dosyaNo) {
+    /*if (options.dosyaNo) {
       selector.$and.push({ dosyaNo: options.dosyaNo });
+    }*/
+
+    if (options.vadeTarihi) {
+      selector.$and.push({ vadeTarihi: options.vadeTarihi });
     }
 
     if (options.islemTarihiBegin) {
@@ -121,7 +125,8 @@ export const GelirGider = withTracker(props => {
       cariKart: doc.cariKart,
       gerceklestiren: doc.gerceklestiren,
       urun: doc.urun,
-      dosyaNo: doc.dosyaNo,
+      vadeTarihi: doc.vadeTarihi,
+      //dosyaNo: doc.dosyaNo,
       islemTarihiBegin: doc.islemTarihiBegin,
       islemTarihiEnd: doc.islemTarihiEnd,
     });
@@ -167,7 +172,7 @@ export const GelirGider = withTracker(props => {
               cariKart: {type: String, optional: true},
               gerceklestiren: {type: String, optional: true},
               urun: {type: String, optional: true},
-              dosyaNo: {type: String, optional: true},
+              vadeTarihi: {type:Date,optional:true},
               islemTarihiBegin: {type: Date, optional: true},
               islemTarihiEnd: {type: Date, optional: true, custom() {
                 const islemTarihiBegin = this.field('islemTarihiBegin');
@@ -238,12 +243,12 @@ export const GelirGider = withTracker(props => {
               </Row>
               <Row>
                 <Col sm={4} className="searchContainer">
-                  <TextField
-                    showInlineError
-                    name="dosyaNo"
+                  <DateTimeField
                     label={false}
-                    placeholder="Dosya no"
-                  />
+                    placeholder="Gerçekleşme tarihi"
+                    isValidDate={v => v.isSameOrAfter(Date.sistemAcilis()) && v.isSameOrBefore(Date.today())}
+                    showInlineError
+                    name="vadeTarihi" />
                 </Col>
                 <Col sm={4} className="searchContainer">
                   <SelectField

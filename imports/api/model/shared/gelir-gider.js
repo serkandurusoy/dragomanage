@@ -246,7 +246,7 @@ export const gelirGider = new SimpleSchema({
     }
   },
   vadeTarihi: {
-    label: 'Vade tarihi',
+    label: 'Gerçekleşme tarihi',
     type: Date,
     index: -1,
     defaultValue: Date.today(),

@@ -212,6 +212,20 @@ class Kart extends Component {
           </Row>
           <Row>
             <Col sm={6}>
+              <DateTimeField
+                content={record && record.sahisBilgileri && record.sahisBilgileri.sonDalisTarihi && record.sahisBilgileri.sonDalisTarihi.toFormattedDate()}
+                showInlineError
+                timeFormat={false}
+                name="sahisBilgileri.sonDalisTarihi" />
+            </Col>
+            <Col sm={6}>
+              <NumberField
+                showInlineError
+                name="sahisBilgileri.toplamDalisSayisi" />
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={6}>
               <SelectField
                 content={record && record.sahisBilgileri && record.sahisBilgileri.dalisSertifikasi && record.sahisBilgileri.dalisSertifikasi.enumValueToLabel(DALIS_SERTIFIKALARI)}
                 multi={false}

@@ -80,6 +80,19 @@ export const sahisBilgileri = new SimpleSchema({
     optional: true,
     allowedValues: Object.keys(DALIS_SEVIYELERI).map(v => DALIS_SEVIYELERI[v].value),
   },
+  sonDalisTarihi: {
+    label: 'Son dalış tarihi',
+    type: Date,
+    max: Date.yesterday(),
+    optional: true,
+  },
+  toplamDalisSayisi: {
+    label: 'Toplam dalış sayısı',
+    type: Number,
+    min: 0,
+    max: 10000,
+    optional: true,
+  },
   aktiviteNotlari: {
     label: 'Aktivite notları',
     type: String,
