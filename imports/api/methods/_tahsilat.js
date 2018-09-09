@@ -42,8 +42,7 @@ export const tahsilat = {
           }
         ]);
       }
-
-      const tahsilat = Tahsilatlar.insert(doc);
+      const tahsilat = Tahsilatlar.insert(doc)
 
       bakiye.kasa.artir(doc.kasa, doc.tutarX100);
       bakiye.cari.artir(doc.cariKart, doc.tutarX100TL);

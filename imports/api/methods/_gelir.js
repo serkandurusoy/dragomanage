@@ -1,13 +1,13 @@
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { ValidationError } from 'meteor/mdg:validation-error';
 import { YETKILER } from '/imports/environment/meta';
 import docToModifier from '/imports/utils/doc-to-modifier';
 import methodMixinYetki from '/imports/utils/method-mixin-yetki';
-import { Gelirler, Bakiye, CariKartlar, Urunler } from '/imports/api/model';
+import { Gelirler, CariKartlar, Urunler } from '/imports/api/model';
 import { iptalOnayiSchema } from '/imports/environment/schema-globals';
 import { bakiye } from './shared/bakiye';
+
 
 export const gelir = {
 
@@ -80,7 +80,6 @@ export const gelir = {
           }
         ]);
       }
-
       const gelir = Gelirler.insert(doc);
 
       bakiye.stok.azalt(doc.urun, doc.konum, doc.adet);

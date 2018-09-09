@@ -5,14 +5,11 @@ import '/imports/environment/schema-globals';
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from 'store';
 import WebFont from 'webfontloader';
 import App from './app';
 import './login-failure-handler';
 import './account-cookie-handler';
-
-injectTapEventPlugin();
 
 let tabCount = 0;
 const storeWithExpiration = {

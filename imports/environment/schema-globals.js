@@ -111,18 +111,3 @@ MessageBox.defaults({
     }
 
 });
-
-/*
-
-regEx: [
-  {msg: '{{label}} formatı hatalı.'},
-  {exp: SimpleSchema.RegEx.Email, msg: 'Geçersiz e-posta adresi.'},
-  {exp: SimpleSchema.RegEx.WeakEmail, msg: 'Geçersiz e-posta adresi.'},
-  {exp: SimpleSchema.RegEx.Domain, msg: 'Geçerli, http ile başlayan bir alan adı olmalı.'},
-  {exp: SimpleSchema.RegEx.WeakDomain, msg: 'Geçerli, http ile başlayan bir alan adı olmalı.'},
-  {exp: SimpleSchema.RegEx.IP, msg: 'Geçerli bir IPv4 veya IPv6 adresi olmalı.'},
-  {exp: SimpleSchema.RegEx.IPv4, msg: 'Geçerli bir IPv4 adresi olmalı.'},
-  {exp: SimpleSchema.RegEx.IPv6, msg: 'Geçerli bir IPv6 adresi olmalı.'},
-  {exp: SimpleSchema.RegEx.Url, msg: 'Geçerli bir internet adresi olmalı.'},
-  {exp: SimpleSchema.RegEx.Id, msg: 'Geçerli bir referans numarası olmalı.'}
-],*/
