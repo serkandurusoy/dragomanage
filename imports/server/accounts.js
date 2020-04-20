@@ -8,8 +8,8 @@ ServiceConfiguration.configurations.upsert(
   {service: 'google'},
   {
     $set: {
-      clientId: '707995421686-38ja0iqvgd7rv1p3pk3ldj0s1cohu31d.apps.googleusercontent.com',
-      secret: 'HU5Nhhlt-HBXiUXVYHT4b6Vo',
+      clientId: 'xxxxx',
+      secret: 'xxxxx',
     }
   }
 );
