@@ -7,7 +7,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "barcode-scan-listener": "^2.0.3",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "classnames": "^2.2.5",
     "cookie-dough": "^0.1.0",
     "cookie-parser": "^1.4.3",
