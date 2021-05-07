@@ -36,7 +36,7 @@
     "react-tap-event-plugin": "^3.0.2",
     "simpl-schema": "^0.4.1",
     "store": "^2.0.12",
-    "ua-parser-js": "^0.7.17",
+    "ua-parser-js": "^0.7.24",
     "uniforms": "^1.22.1",
     "webfontloader": "^1.6.28",
     "xml2js": "^0.4.19"
